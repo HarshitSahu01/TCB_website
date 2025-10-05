@@ -7,7 +7,7 @@ const oxanium = Oxanium({
 const montserrat = Montserrat({
   subsets: ["latin"],
 });
-  
+
 // --- DATA ---
 // In a real app, this would come from an API.
 // Using placeholder images from picsum.photos
@@ -47,6 +47,7 @@ const AchievementCard = ({ imageUrl, customClass }) => {
 // --- Main App Component ---
 function AchievementsPage() {
   return (
+    <div>
     <div className="app-container">
       <section className="achievements-section">
         {/* We use CSS Grid to place each item specifically */}
@@ -85,6 +86,13 @@ function AchievementsPage() {
             <p>Celebrating the wins of TheCodeBreakers community.</p>
           </div>
         </div>
+      </section>
+      </div>
+      
+      <section className="placements-section">
+      <h1 className={`${oxanium.className} placements-section`}>Placements & Offers</h1>
+      
+        {/* Content for the placements section */}
       </section>
     </div>
   );
