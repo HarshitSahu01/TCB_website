@@ -1,46 +1,48 @@
 /* --- Global Styles & Container --- */
-
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #05010F; /* The main dark background */
 }
 
+/* CRITICAL FIX 1: Wrapper for Vertical Stacking (Placements below Achievements) */
+.main-page-wrapper {
+    display: flex; 
+    flex-direction: column; 
+    width: 100%;
+}
+
 .app-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  /* ... rest of the app-container styles ... */
+    /* app-container now just focuses on width and spacing */
+    width: 100%;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
 }
 .achievements-section {
-  width: 100%; /* Important: allows it to take up available space */
-  display: flex;
-text-align: center;
-
-line-height: normal;  justify-content: center; /* Ensures the grid inside is centered */
+    width: 100%;
+    display: block; /* Ensure it behaves as a block element */
 }
 
 /* --- Grid Layout --- */
 .achievements-grid {
   display: grid;
   
-  /* Use 7 equal fractions (1fr) again, but rely on max-width for overall control */
+  /* CRITICAL: Use 7 equal fractions to spread the layout wide */
   grid-template-columns: repeat(7, 1fr); 
   
-  /* CRITICAL: Set a fixed row height. This is simpler than the padding trick
-     if we precisely control the row span (we'll use 150px as a baseline). */
+  /* CRITICAL: Set the base height for 1 unit (the short card) */
   grid-auto-rows: 150px; 
   
   gap: 20px;
   
-  /* Centering */
-  /* margin-left: auto;
-  margin-right: auto; */
-  max-width: 1500px; /* Adjust this to control the final width of the layout */
+  /* CRITICAL FIX 2: Centering the entire block */
+  margin-left: auto;
+  margin-right: auto;
+  
+  max-width: 1500px; 
   width: 100%;
   
   position: relative;
@@ -48,7 +50,6 @@ line-height: normal;  justify-content: center; /* Ensures the grid inside is cen
 
 /* --- Central Text Block Styling --- */
 .center-text-container {
-  /* Place it in the middle of our 7-column grid */
   grid-column: 3 / span 3;
   grid-row: 3 / span 2;
   color: white;
@@ -57,20 +58,19 @@ line-height: normal;  justify-content: center; /* Ensures the grid inside is cen
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 10; /* CRUCIAL: Make sure text is on top of images */
-  pointer-events: none; /* Allows clicking through the text block if needed */
-  
+  z-index: 10; 
+  pointer-events: none; 
 }
 
 .center-text-container h1 {
   margin: 0;
   line-height: 1.2;
-  font-family: Oxanium;
-font-size: 48px;
-font-style: normal;
-font-weight: 700;
- white-space: nowrap;
- color: #6dc9c6;
+  font-family: 'Oxanium', sans-serif;
+  font-size: 2.8rem; /* Adjusted for better responsiveness */
+  font-style: normal;
+  font-weight: 700;
+  white-space: nowrap;
+  color: #6dc9c6;
 }
 
 .center-text-container p {
@@ -78,16 +78,16 @@ font-weight: 700;
   opacity: 0.8;
   max-width: 300px;
   margin-top: 15px;
-   white-space: nowrap;
-    font-family: montserrat;
-    margin-right: 150px;
+  margin-right: 150px;
+  white-space: nowrap;
+  /* margin-right: 0 !important; Removed incorrect margin */
 }
 
-/* --- Individual Card Styling --- */
+/* --- Individual Card Styling (For Achievements) --- */
 .card-wrapper {
-  position: relative; /* Must be relative for absolute children */
-  width: 100%; /* Fill the grid cell width */
-  height: 100%; /* Fill the grid cell height (150px or more via span) */
+  position: relative; 
+  width: 100%; 
+  height: 100%; 
 }
 
 .shadow-bg {
@@ -96,135 +96,65 @@ font-weight: 700;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #0C0C0C; /* The darker "shadow" color */
+  background-color: #0C0C0C;
   border-radius: 20px;
-  padding: 30px;
   transition: transform 0.3s ease;
+  z-index: 2;
 }
 
- .image-container {
+.image-container {
     position: absolute;
-    /* Offset remains the same */ 
-     top: -10px;
-    left: 10px;
-    width: 150px; 
-    margin : 10px;
-    margin-bottom : 15px;
-    height: 200px;
- }
-    /* ... rest of the image styles ... */
- 
+    /* CRITICAL FIX 3: Percentage-based size and offset */
+    top: 10px; /* Offset down */
+    left: -10px; /* Offset left (reversed offset to match image) */
+    width: calc(100% - 10px); 
+    height: calc(100% - 10px);
+    border-radius: 20px;
+    overflow: hidden;
+    z-index: 5;
+}
 
 .image-container img {
-  border-radius: 10px; 
- width: 170.102px;
-height: 203.438px;
-  object-fit: cover; /* Ensures image fills the container without stretching */
-  display: block;
+    /* CRITICAL FIX 4: Image must fill its container */
+    width: 100%; 
+    height: 100%;
+    object-fit: cover; 
+    display: block;
 }
-
-
-.card-wrapper.card-1{
-  position: relative;
-  top: 20px;
-  left: 20px;
-  
-}
-
-.card-wrapper.card-2{
-  position: absolute;
-  top: 17px;
-  left: 20px;
-  
-}
-
-
-
-/* --- Card Hover Effect (Optional but nice) --- */
-/* .card-wrapper:hover .image-container {
-  transform: translate(-5px, 5px);
-}
-
-.card-wrapper:hover .shadow-bg {
-  transform: translate(5px, -5px);
-} */
-
 
 /* --- Decorative "Shadow Only" Divs --- */
 .shadow-only {
   background-color: #0C0C0C;
   border-radius: 20px;
-  margin: 10px;
-   width: 100px; 
-  height: 120px;
-
-  grid-row: 1 / span 1; /* Place all of them in the first row */
+  grid-row: 1 / span 1; 
+  width: 100%;
+  height: 100%;
 }
 
 
-/* --- PLACEMENT CLASSES FOR EACH CARD ON THE GRID --- */
-/* This is where we manually position each card */
+/* --- EXACT PLACEMENT CLASSES TO MATCH THE IMAGE --- */
 
-/* --- PRECISE PLACEMENT CLASSES TO MATCH THE LATEST IMAGE --- */
-/* The layout is based on a 7-column grid starting from Row 2 (Row 1 is the shadows) */
+/* Row 1 is reserved for the shadow-only divs (grid-row: 1) */
+/* The main image content starts on grid-row: 2 */
 
 /* Column 1: One tall, one short */
-.card-1 { 
-    grid-column: 1 / span 1; 
-    grid-row: 2 / span 2; /* TALL (2 rows) */
-} 
-.card-8 { 
-    grid-column: 1 / span 1; 
-    grid-row: 4 / span 1; /* SHORT (1 row) */
-} 
+.card-1 { grid-column: 1 / span 1; grid-row: 2 / span 2; } 
+.card-8 { grid-column: 1 / span 1; grid-row: 4 / span 1; } 
 
-/* Column 2: Two short, one short */
-.card-2 { 
-    grid-column: 2 / span 1; 
-    grid-row: 2 / span 1; /* SHORT */
-} 
-.card-3 { 
-    grid-column: 2 / span 1; 
-    grid-row: 3 / span 2; /* TALL (2 rows) */
-} 
-.card-9 { 
-    grid-column: 2 / span 1; 
-    grid-row: 5 / span 1; /* SHORT */
-}
+/* Column 2: Two short, one tall, one short (Pattern slightly modified to fit 7 columns) */
+.card-2 { grid-column: 2 / span 1; grid-row: 2 / span 1; } 
+.card-3 { grid-column: 2 / span 1; grid-row: 3 / span 2; } 
+.card-9 { grid-column: 2 / span 1; grid-row: 5 / span 1; }
 
 /* Column 3, 4, 5: The center block, surrounding the text */
-.card-4 { 
-    grid-column: 3 / span 1; 
-    grid-row: 2 / span 1; /* SHORT */
-}
-.card-5 { 
-    grid-column: 4 / span 1; 
-    grid-row: 2 / span 1; /* SHORT */
-}
-.card-6 { 
-    grid-column: 5 / span 1; 
-    grid-row: 2 / span 2; /* TALL (2 rows) */
-} 
+.card-4 { grid-column: 3 / span 1; grid-row: 2 / span 1; }
+.card-5 { grid-column: 4 / span 1; grid-row: 2 / span 1; }
+.card-6 { grid-column: 5 / span 1; grid-row: 2 / span 2; } 
 
 /* Column 6, 7: The right block */
-.card-7 { 
-    grid-column: 6 / span 1; 
-    grid-row: 2 / span 2; /* TALL (2 rows) */
-}
-.card-10 { 
-    grid-column: 7 / span 1; 
-    grid-row: 2 / span 2; /* TALL (2 rows) */
-}
-.card-11 { 
-    grid-column: 7 / span 1; 
-    grid-row: 4 / span 2; /* TALL (2 rows) */
-} 
-
-/* Text Block - MUST occupy the 3x2 space left open in the center. */
-.center-text-container {
-    grid-column: 3 / span 3; 
-    grid-row: 3 / span 2; /* Occupies the space from row 3 to row 5 */
-}
+.card-7 { grid-column: 6 / span 1; grid-row: 2 / span 2; }
+.card-10 { grid-column: 7 / span 1; grid-row: 2 / span 2; }
+.card-11 { grid-column: 7 / span 1; grid-row: 4 / span 2; } 
 
 /* Bottom Row (filling the gaps) */
 .card-12 { grid-column: 3 / span 1; grid-row: 5 / span 1; }
@@ -233,19 +163,143 @@ height: 203.438px;
 .card-15 { grid-column: 6 / span 1; grid-row: 5 / span 1; }
 .card-16 { grid-column: 7 / span 1; grid-row: 5 / span 1; }
 
-/* --- Responsive Design for Smaller Screens --- */
-@media (max-width: 900px) {
-  .achievements-grid {
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 120px;
-    gap: 15px;
-  }
-  .center-text-container h1 {
-    font-size: 2rem;
-  }
-  .center-text-container p {
-    font-size: 1rem;
-  }
-  /* Re-adjust grid positions for a 4-column layout */
+
+/* =================================================== */
+/* --- SECTION 2: PLACEMENTS & OFFERS STYLING --- */
+/* =================================================== */
+
+.placements-section {
+    width: 100%;
+    padding-top: 50px; 
+    padding-bottom: 100px;
+    /* Ensure no misplaced margin/float is here */
+}
+
+/* Centers the content within the section */
+.placements-content-wrapper {
+    max-width: 1400px; /* Match the max-width of the image grid */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.placements-title {
+    color: white;
+    font-size: 3rem; 
+    margin-bottom: 50px;
+    text-align: left;
+    font-family: 'Oxanium', sans-serif;
+    font-weight: 700;
+}
+
+/* --- Placement Card Grid (4-Column Layout) --- */
+.placement-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 30px;
+}
+
+/* --- Individual Placement Card Styling --- */
+.placement-card {
+    background-color: #0C0C0C; 
+    border-radius: 40px;
+    overflow: hidden; 
+    padding: 15px;
+    color: white;
+    /* Adding subtle border to match design */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(
+        135deg, 
+        #194242, /* Bright Cyan */
+        #0d3837, /* Teal */
+        #0e0e0e 85%, /* Dark background stops the gradient in the middle */
+        #103636,
+        #073535
+    );
+    
+}
+
+.placement-image-container {
+    width: 100%;
+    padding-top: 100%; 
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px; 
+}
+
+.placement-image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.placement-info {
+    padding-top: 15px;
+}
+
+.placement-info h3 {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 700;
+}
+
+.placement-info p {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin: 5px 0 15px 0;
+}
+
+.placement-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #333;
+    padding-top: 10px;
+    font-size: 0.8rem;
+}
+
+.social-icons {
+    display: flex; /* CRITICAL: Activates the flexible row layout */
+    align-items: center; /* Vertically centers the icons in the row */
+    gap: 10px; /* Adds horizontal space between the icons */
+}
+
+.social-icons .social-icon {
   
+    width: 20px;
+    height: 20px; 
+    margin-right: 8px;
+    opacity: 0.4;
+    transition: opacity 0.2s;
+
+     display: block; /* Ensure the SVGs themselves display properly */
+    flex-shrink: 0;
+}
+
+
+.social-icons .social-icon:hover {
+    opacity: 1;
+}
+
+.company-tag {
+    background-color: #33334f;
+    padding: 4px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Responsive adjustment for the placement grid */
+@media (max-width: 1200px) {
+    .placement-cards-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+@media (max-width: 600px) {
+    .placement-cards-grid {
+        grid-template-columns: 1fr; 
+    }
 }
