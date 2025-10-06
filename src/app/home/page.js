@@ -3,6 +3,7 @@ import React from "react";
 import { Oxanium, Montserrat } from "next/font/google";
 import { motion } from "framer-motion";
 import NextImage from "next/image";
+import { useState } from "react";
 
 // Font imports
 const oxanium = Oxanium({
@@ -26,9 +27,16 @@ const icons = [
 ];
 
 export default function Home() {
+    const [activeTab, setActiveTab] = useState("tech");
+    // const domains = activeTab === "tech" ? techDomains : nonTechDomains;
+
     return (
         <>
-            <main className="relative flex items-center justify-center h-screen bg-gradient-to-b from-gray-900 to-black overflow-hidden text-white">
+            <main className="relative flex items-center justify-center h-screen bg-black overflow-hidden text-white" style={{ backgroundImage: "url('/bg_hero.svg')" }}>
+                {/* glowing blobs */}
+                {/* <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-[#02232A] rounded-full blur-[200px]" />
+                <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-[#02232A] rounded-full blur-[200px]" /> */}
+
 
                 {/* Floating Tech Icons */}
                 <div className="absolute w-full h-full flex items-center justify-center">
@@ -77,33 +85,18 @@ export default function Home() {
                 {/* Hero Section */}
                 <div className="text-center z-10 px-4">
                     <h1
-                        className={`${oxanium.className} text-7xl md:text-8xl font-bold tracking-tight text-[#C1C1C1]`}
+                        className={`${oxanium.className} text-7xl md:text-8xl font-bold tracking-tight bg-[linear-gradient(to_right,_#02232A,_#C1C1C1,_#C1C1C1,_#C1C1C1,_#C1C1C1,_#C1C1C1,_#C1C1C1,_#C1C1C1,_#C1C1C1,_#02232A)] bg-clip-text text-transparent`}
                     >
                         The Codebreakers Club
                     </h1>
-                    <p
-                        className={`${montserrat.className} text-xl md:text-2xl text-[#C1C1C1] mt-4 font-semibold`}
-                    >
+                    <p className={`${montserrat.className} text-xl md:text-2xl text-[#C1C1C1] mt-4 font-semibold`}>
                         Breaking Codes, Creating Minds
                     </p>
 
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="
-  bg-white/12        /* translucent background */
-  backdrop-blur-md    /* blurs content behind */
-  border border-white/30 
-  rounded-full
-  px-6 py-2          /* padding */
-  text-white         /* text color */
-  font-semibold
-  hover:bg-white/20  /* slightly brighter on hover */
-  transition
-  duration-300
-  ease-in-out
-  mt-8
-">
+                        className="bg-white/12 backdrop-blur-md border border-white/30 rounded-full px-6 py-2 text-white font-semibold hover:bg-white/20 transition duration-300 ease-in-out mt-8">
                         Explore Now
                     </motion.button>
                 </div>
@@ -153,6 +146,77 @@ export default function Home() {
                     </div>
 
                 </div>
+            </div>
+
+            {/* Domains section */}
+            <div className="py-20 bg-black text-[#C1C1C1] text-center">
+                <h1 className={`${oxanium.className} text-5xl font-bold mb-2 text-center`}>Explore Domains at TheCodeBreakers</h1>
+                <p className={`${montserrat.className} text-sm bg-gradient-to-b from-[#C1C1C1] via-[#C1C1C1] to-gray-900 md:text-xl w-[700px] mx-auto font-semibold bg-clip-text text-transparent`}>
+                    A vibrant space for every passion—whether you’re a coder, designer, writer, or event wizard.
+                </p>
+
+                {/* Capsule Toggle */}
+                <div className="flex justify-center mb-8 mt-8">
+                    <div className="flex bg-white/10 rounded-full p-0 border border-white/20">
+                        <button
+                            onClick={() => setActiveTab("tech")}
+                            className={`px-7 py-1.5 rounded-full transition-all ${activeTab === "tech"
+                                ? "bg-white/10 text-white font-semibold"
+                                : "text-white hover:text-gray-300 "
+                                }`}
+                        >
+                            Tech
+                        </button>
+                        <button
+                            onClick={() => setActiveTab("nontech")}
+                            className={`px-7 py-1.5 rounded-full transition-all ${activeTab === "nontech"
+                                ? "bg-white text-black font-semibold"
+                                : "text-white hover:text-gray-300"
+                                }`}
+                        >
+                            Non Tech
+                        </button>
+                    </div>
+                </div>
+
+                {/* bento grid when tech*/}
+                {activeTab === "tech" && (
+                    <>
+                        <div className="bento flex justify-center items-center flex-wrap gap-4">
+                            <div className="bento-item h-[230px] w-[600px] bg-white/10 rounded-3xl flex items-center justify-center"></div>
+                            <div className="bento-item h-[230px] w-[350px] bg-white/10 rounded-3xl flex items-center justify-center flex-col"></div>
+                        </div>
+
+
+                        <div className="bento flex justify-center items-center flex-wrap gap-4 mt-4">
+                            <div className="bento-item h-[230px] w-[350px] bg-white/10 rounded-3xl flex items-center justify-center"></div>
+                            <div className="bento-item h-[230px] w-[600px] bg-white/10 rounded-3xl flex items-center justify-center flex-col"></div>
+                        </div>
+                    </>
+                )}
+
+                {/* bento grid when non tech*/}
+                {activeTab === "nontech" && (
+                    <>
+                        <div className="bento flex justify-center items-center flex-wrap gap-4">
+                            <div className="bento-item h-[230px] w-[350px] bg-white/10 rounded-3xl flex items-center justify-center flex-col"></div>
+                            <div className="bento-item h-[230px] w-[600px] bg-white/10 rounded-3xl flex items-center justify-center"></div>
+                        </div>
+
+                        <div className="bento flex justify-center items-center flex-wrap gap-4 mt-4">
+                            <div className="bento-item h-[230px] w-[600px] bg-white/10 rounded-3xl flex items-center justify-center flex-col"></div>
+                            <div className="bento-item h-[230px] w-[350px] bg-white/10 rounded-3xl flex items-center justify-center"></div>
+                        </div>
+                    </>
+                )}
+
+
+            </div>
+
+            {/* Moments section */}
+            <div className="py-20 bg-black text-[#C1C1C1] text-center">
+                <h1 className={`${oxanium.className} text-5xl font-bold mb-2 text-center`}>Moments at TheCodeBreakers</h1>
+                <img src='/sample_img.png' alt='Moments' className='mx-auto mt-20 rounded-2xl w-[400px] h-[300px] object-cover' />
             </div>
 
         </>
