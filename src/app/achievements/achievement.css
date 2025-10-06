@@ -208,11 +208,11 @@ body {
     /* Adding subtle border to match design */
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: linear-gradient(
-        135deg, 
+        -135deg, 
         #194242, /* Bright Cyan */
-        #0d3837, /* Teal */
+        #0a201e, /* Teal */
         #0e0e0e 85%, /* Dark background stops the gradient in the middle */
-        #103636,
+        #0b2525,
         #073535
     );
     
@@ -265,8 +265,16 @@ body {
     display: flex; /* CRITICAL: Activates the flexible row layout */
     align-items: center; /* Vertically centers the icons in the row */
     gap: 10px; /* Adds horizontal space between the icons */
+    opacity: 2.7;
+
 }
 
+.social-icon.icongithub {
+    height: 30px;
+    width: 30px;
+     display: block; /* Ensure the SVGs themselves display properly */
+    flex-shrink: 0;
+}
 .social-icons .social-icon {
   
     width: 20px;
@@ -281,7 +289,7 @@ body {
 
 
 .social-icons .social-icon:hover {
-    opacity: 1;
+    opacity: 1.3;
 }
 
 .company-tag {
