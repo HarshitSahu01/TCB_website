@@ -124,13 +124,15 @@ function AchievementsPage() {
           <div className="achievements-grid">
             
             {/* Top row of "shadow-only" divs for decoration */}
-            <div className="shadow-only" style={{ gridColumn: '1 / span 1', gridRow: 1 }}></div>
-            <div className="shadow-only" style={{ gridColumn: '2 / span 1', gridRow: 1 }}></div>
-            <div className="shadow-only" style={{ gridColumn: '3 / span 1', gridRow: 1 }}></div>
-            <div className="shadow-only" style={{ gridColumn: '4 / span 1', gridRow: 1 }}></div>
-            <div className="shadow-only" style={{ gridColumn: '5 / span 1', gridRow: 1 }}></div>
-            <div className="shadow-only" style={{ gridColumn: '6 / span 1', gridRow: 1 }}></div>
-            <div className="shadow-only" style={{ gridColumn: '7 / span 1', gridRow: 1 }}></div>
+            <div className="shadow-only" style={{ gridColumn: '1 ', gridRow:" 1 / span 1"}}></div>
+            <div className="shadow-only" style={{ gridColumn: '2 ', gridRow: "1 / span 2"}}></div>
+            <div className="shadow-only" style={{ gridColumn: '3 ', gridRow: "1 / span 1"}}></div>
+            <div className="shadow-only" style={{ gridColumn: '4 ', gridRow: "1 / span 2"}}></div>
+            <div className="shadow-only" style={{ gridColumn: '5 ', gridRow: "1 / span 1"}}></div>
+            <div className="shadow-only" style={{ gridColumn: '6 ', gridRow: "1 / span 2"}}></div>
+            <div className="shadow-only" style={{ gridColumn: '7 ', gridRow: "1 / span 1"}}></div>
+
+
 
             {/* The actual achievement cards, placed manually on the grid */}
             <AchievementCard imageUrl={achievementsData[0].imageUrl} customClass="card-1" />
