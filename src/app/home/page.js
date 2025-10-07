@@ -28,15 +28,12 @@ const icons = [
 
 export default function Home() {
     const [activeTab, setActiveTab] = useState("tech");
+
     // const domains = activeTab === "tech" ? techDomains : nonTechDomains;
 
     return (
         <>
             <main className="relative flex items-center justify-center h-screen bg-black overflow-hidden text-white" style={{ backgroundImage: "url('/bg_hero.svg')" }}>
-                {/* glowing blobs */}
-                {/* <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-[#02232A] rounded-full blur-[200px]" />
-                <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-[#02232A] rounded-full blur-[200px]" /> */}
-
 
                 {/* Floating Tech Icons */}
                 <div className="absolute w-full h-full flex items-center justify-center">
@@ -182,34 +179,120 @@ export default function Home() {
                 {/* bento grid when tech*/}
                 {activeTab === "tech" && (
                     <>
+                        {/* Row 1 */}
                         <div className="bento flex justify-center items-center flex-wrap gap-4">
-                            <div className="bento-item h-[230px] w-[600px] bg-white/10 rounded-3xl flex items-center justify-center"></div>
-                            <div className="bento-item h-[230px] w-[350px] bg-white/10 rounded-3xl flex items-center justify-center flex-col"></div>
+                            {/* 1️⃣ Web Development*/}
+                            <div className="bento-item relative h-[230px] w-[600px] rounded-3xl overflow-hidden bg-white/10">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_#44A4A1_0%,_transparent_80%)] opacity-70 blur-2xl"></div>
+                                <div className="relative z-10 p-6 text-left">
+                                    <h2 className={`${montserrat.className} text-2xl font-bold mb-2 text-white`}>Web Development</h2>
+                                    <p className="text-md text-gray-300 leading-relaxed">
+                                        Build and design interactive websites and web apps using modern
+                                        technologies like React, Next.js, and Tailwind CSS.
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* 2️⃣ Competitive Programming  */}
+                            <div className="bento-item relative h-[230px] w-[350px] rounded-3xl overflow-hidden bg-white/10">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_#44A4A1_0%,_transparent_70%)] opacity-70 blur-2xl"></div>
+                                <div className="relative z-10 p-6 text-left">
+                                    <h2 className={`${montserrat.className} text-2xl font-bold mb-2 text-white`}>
+                                        Competitive Programming
+                                    </h2>
+                                    <p className="text-md text-gray-300 leading-relaxed">
+                                        Solve coding challenges, boost problem-solving skills, and prepare
+                                        for global tech contests.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
 
-
+                        {/* Row 2 */}
                         <div className="bento flex justify-center items-center flex-wrap gap-4 mt-4">
-                            <div className="bento-item h-[230px] w-[350px] bg-white/10 rounded-3xl flex items-center justify-center"></div>
-                            <div className="bento-item h-[230px] w-[600px] bg-white/10 rounded-3xl flex items-center justify-center flex-col"></div>
+                            {/* 3️⃣ Machine Learning */}
+                            <div className="bento-item relative h-[230px] w-[350px] rounded-3xl overflow-hidden bg-white/10">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_#44A4A1_0%,_transparent_70%)] opacity-70 blur-2xl"></div>
+                                <div className="relative z-10 p-6 text-left">
+                                    <h2 className={`${montserrat.className} text-2xl font-bold mb-2 text-white`}>Machine Learning</h2>
+                                    <p className="text-md text-gray-300 leading-relaxed">
+                                        Explore real-world AI with hands-on projects using Python, TensorFlow,
+                                        and data-driven insights.
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* 4️⃣ Blockchain */}
+                            <div className="bento-item relative h-[230px] w-[600px] rounded-3xl overflow-hidden bg-white/10">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_#44A4A1_0%,_transparent_70%)] opacity-70 blur-2xl"></div>
+                                <div className="relative z-10 p-6 text-left">
+                                    <h2 className={`${montserrat.className} text-2xl font-bold mb-2 text-white`}>Blockchain</h2>
+                                    <p className="text-md text-gray-300 leading-relaxed">
+                                        Learn the technology behind cryptocurrencies, decentralized apps, and
+                                        smart contracts.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </>
                 )}
 
-                {/* bento grid when non tech*/}
+                {/* bento grid when nontech*/}
                 {activeTab === "nontech" && (
                     <>
+                        {/* Row 1 */}
                         <div className="bento flex justify-center items-center flex-wrap gap-4">
-                            <div className="bento-item h-[230px] w-[350px] bg-white/10 rounded-3xl flex items-center justify-center flex-col"></div>
-                            <div className="bento-item h-[230px] w-[600px] bg-white/10 rounded-3xl flex items-center justify-center"></div>
+                            {/* 1️⃣ Web Development*/}
+                            <div className="bento-item relative h-[230px] w-[350px] rounded-3xl overflow-hidden bg-white/10">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_#44A4A1_0%,_transparent_80%)] opacity-70 blur-2xl"></div>
+                                <div className="relative z-10 p-6 text-left">
+                                    <h2 className={`${montserrat.className} text-2xl font-bold mb-2 text-white`}>Content Writing</h2>
+                                    <p className="text-md text-gray-300 leading-relaxed">
+                                        Craft engaging stories and blogs that connect ideas with people.
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* 2️⃣ Competitive Programming  */}
+                            <div className="bento-item relative h-[230px] w-[600px] rounded-3xl overflow-hidden bg-white/10">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_#44A4A1_0%,_transparent_70%)] opacity-70 blur-2xl"></div>
+                                <div className="relative z-10 p-6 text-left">
+                                    <h2 className={`${montserrat.className} text-2xl font-bold mb-2 text-white`}>
+                                        Event Management
+                                    </h2>
+                                    <p className="text-md text-gray-300 leading-relaxed">
+                                        Plan, organize, and execute exciting campus and tech events.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
 
+                        {/* Row 2 */}
                         <div className="bento flex justify-center items-center flex-wrap gap-4 mt-4">
-                            <div className="bento-item h-[230px] w-[600px] bg-white/10 rounded-3xl flex items-center justify-center flex-col"></div>
-                            <div className="bento-item h-[230px] w-[350px] bg-white/10 rounded-3xl flex items-center justify-center"></div>
+                            {/* 3️⃣ Machine Learning */}
+                            <div className="bento-item relative h-[230px] w-[600px] rounded-3xl overflow-hidden bg-white/10">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_#44A4A1_0%,_transparent_70%)] opacity-70 blur-2xl"></div>
+                                <div className="relative z-10 p-6 text-left">
+                                    <h2 className={`${montserrat.className} text-2xl font-bold mb-2 text-white`}>Graphic Designing</h2>
+                                    <p className="text-md text-gray-300 leading-relaxed">
+                                        Explore creativity with UI/UX and graphic design experiences.
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* 4️⃣ Blockchain */}
+                            <div className="bento-item relative h-[230px] w-[350px] rounded-3xl overflow-hidden bg-white/10">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_#44A4A1_0%,_transparent_70%)] opacity-70 blur-2xl"></div>
+                                <div className="relative z-10 p-6 text-left">
+                                    <h2 className={`${montserrat.className} text-2xl font-bold mb-2 text-white`}>PR & Marketing</h2>
+                                    <p className="text-md text-gray-300 leading-relaxed">
+                                        Promote events, engage audiences, and build strong community presence.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </>
                 )}
-
 
             </div>
 
