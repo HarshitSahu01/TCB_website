@@ -68,19 +68,21 @@ body {
   line-height: 1.2;
   font-family: 'Oxanium', sans-serif;
   font-size: 2.8rem; /* Adjusted for better responsiveness */
-  font-style: normal;
+  font-style: normal;   
   font-weight: 700;
   white-space: nowrap;
-  color: #6dc9c6;
+  color: linear-gradient(to left, #999999 75%, #FFFFFF);
 }
 
-.center-text-container p {
+.center-text-container p {  
   font-size: 1.1rem;
-  opacity: 0.8;
+  opacity: 0.8; 
   max-width: 300px;
   margin-top: 15px;
   margin-right: 150px;
   white-space: nowrap;
+  color:#FFFFFF;
+  font-weight: bolder;
   /* margin-right: 0 !important; Removed incorrect margin */
 }
 
@@ -143,14 +145,14 @@ body {
 .card-8 { grid-column: 1 / span 1; grid-row: 4 / span 1; } 
 
 /* Column 2: Two short, one tall, one short (Pattern slightly modified to fit 7 columns) */
-.card-2 { grid-column: 2 / span 1; grid-row: 3 / span 1; } 
-.card-3 { grid-column: 2 / span 1; grid-row: 3 / span 2; } 
+.card-2 { grid-column: 2 / span 1; grid-row: 3/ span 2; } 
+.card-3 { grid-column: 3 / span 1; grid-row: 2 / span 2; } 
 .card-9 { grid-column: 2 / span 1; grid-row: 5 / span 1; }
 
 /* Column 3, 4, 5: The center block, surrounding the text */
-.card-4 { grid-column: 3 / span 1; grid-row: 2 / span 1; }
-.card-5 { grid-column: 4 / span 1; grid-row: 2 / span 1; }s
-.card-6 { grid-column: 5 / span 1; grid-row: 2 / span 2; } 
+.card-4 { grid-column: 4 / span 1; grid-row: 3 / span 2; }
+.card-5 { grid-column: 5 / span 1; grid-row: 2 / span 2; }
+.card-6 { grid-column: 6 / span 1; grid-row: 3 / span 2; }
 
 /* Column 6, 7: The right block */
 .card-7 { grid-column: 6 / span 1; grid-row: 2 / span 2; }
@@ -198,6 +200,8 @@ body {
     grid-template-columns: repeat(4, 1fr); 
     gap: 30px;
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
     
 }
 
@@ -213,16 +217,16 @@ body {
     background: linear-gradient(
         -135deg, 
         #194242, /* Bright Cyan */
-        #0a201e, /* Teal */
+        #05100f, /* Teal */
         #0e0e0e 85%, /* Dark background stops the gradient in the middle */
-        #0b2525,
+        #0b2727,
         #073535
     );
     
 }
 
 .placement-image-container {
-    width: 100%;
+    width: 100%;    
     padding-top: 100%; 
     position: relative;
     overflow: hidden;
