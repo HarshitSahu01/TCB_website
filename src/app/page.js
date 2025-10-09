@@ -1,4 +1,4 @@
-import AchievementsPage from "./achievements/page1";
+import AchievementsPage from "./achievements/page";
 
 export default function Home() {
   return <AchievementsPage />;
