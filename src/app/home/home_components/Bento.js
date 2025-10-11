@@ -503,7 +503,7 @@ const Bento = ({
     const isMobile = useMobileDetection();
     const shouldDisableAnimations = disableAnimations || isMobile;
 
-    const renderCard = (card, index, width, activeTab) => {
+    const renderCard = (card, index, width) => {
         const baseClassName = `card flex flex-col justify-center items-center relative border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${enableBorderGlow ? 'card--border-glow' : ''
             }`;
 
@@ -542,23 +542,23 @@ const Bento = ({
         }
 
         // Non-particle card
-        return (
-            <div
-                key={index}
-                className={baseClassName}
-                style={cardStyle}
-                ref={el => attachCardEvents(el)} // put your mousemove/magnetism/click logic here
-            >
-                <div className="card__content flex flex-col relative text-white">
-                    <h3 className={`card__title font-normal text-base m-0 mb-1 ${textAutoHide ? 'text-clamp-1' : ''}`}>
-                        {card.title}
-                    </h3>
-                    <p className={`card__description text-xs leading-5 opacity-90 ${textAutoHide ? 'text-clamp-2' : ''}`}>
-                        {card.description}
-                    </p>
-                </div>
-            </div>
-        );
+        // return (
+        //     <div
+        //         key={index}
+        //         className={baseClassName}
+        //         style={cardStyle}
+        //         ref={el => attachCardEvents(el)} // put your mousemove/magnetism/click logic here
+        //     >
+        //         <div className="card__content flex flex-col relative text-white">
+        //             <h3 className={`card__title font-normal text-base m-0 mb-1 ${textAutoHide ? 'text-clamp-1' : ''}`}>
+        //                 {card.title}
+        //             </h3>
+        //             <p className={`card__description text-xs leading-5 opacity-90 ${textAutoHide ? 'text-clamp-2' : ''}`}>
+        //                 {card.description}
+        //             </p>
+        //         </div>
+        //     </div>
+        // );
     };
 
 
