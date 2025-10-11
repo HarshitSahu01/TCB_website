@@ -512,7 +512,7 @@ const Bento = ({
             borderColor: 'var(--border-color)',
             color: 'var(--white)',
             width,
-            height: '230px',
+            height: '260px',
         };
 
         if (enableStars) {
@@ -537,28 +537,8 @@ const Bento = ({
         </p>
     </div>
 </ParticleCard>
-
             );
         }
-
-        // Non-particle card
-        // return (
-        //     <div
-        //         key={index}
-        //         className={baseClassName}
-        //         style={cardStyle}
-        //         ref={el => attachCardEvents(el)} // put your mousemove/magnetism/click logic here
-        //     >
-        //         <div className="card__content flex flex-col relative text-white">
-        //             <h3 className={`card__title font-normal text-base m-0 mb-1 ${textAutoHide ? 'text-clamp-1' : ''}`}>
-        //                 {card.title}
-        //             </h3>
-        //             <p className={`card__description text-xs leading-5 opacity-90 ${textAutoHide ? 'text-clamp-2' : ''}`}>
-        //                 {card.description}
-        //             </p>
-        //         </div>
-        //     </div>
-        // );
     };
 
 
@@ -591,7 +571,7 @@ const Bento = ({
 }
 
 .card {
-  height: 230px !important;
+  height: 250px !important;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -692,7 +672,7 @@ const Bento = ({
                     {/* Row 1 */}
                     <div className="flex justify-center items-center gap-4">
                         {techDomains.slice(0, 2).map((card, index) => {
-                            const width = index === 0 ? '600px' : '350px';
+                            const width = index === 0 ? '650px' : '400px';
                             return renderCard(card, index, width);
                         })}
                     </div>
@@ -700,7 +680,7 @@ const Bento = ({
                     {/* Row 2 */}
                     <div className="flex justify-center gap-4">
                         {techDomains.slice(2, 4).map((card, index) => {
-                            const width = index === 0 ? '350px' : '600px'; // <-- swapped widths here
+                            const width = index === 0 ? '400px' : '650px'; // <-- swapped widths here
                             return renderCard(card, index + 2, width); // index offset for unique key
                         })}
                     </div>
@@ -714,7 +694,7 @@ const Bento = ({
                     {/* Row 1 */}
                     <div className="flex justify-center items-center gap-4">
                         {nonTechDomains.slice(0, 2).map((card, index) => {
-                            const width = index === 0 ? '350px' : '600px';
+                            const width = index === 0 ? '400px' : '650px';
                             return renderCard(card, index, width);
                         })}
                     </div>
@@ -722,7 +702,7 @@ const Bento = ({
                     {/* Row 2 */}
                     <div className="flex justify-center gap-4">
                         {nonTechDomains.slice(2, 4).map((card, index) => {
-                            const width = index === 0 ? '600px' : '350px'; // <-- swapped widths here
+                            const width = index === 0 ? '650px' : '400px'; // <-- swapped widths here
                             return renderCard(card, index + 2, width); // index offset for unique key
                         })}
                     </div>
