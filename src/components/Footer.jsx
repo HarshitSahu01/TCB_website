@@ -161,11 +161,7 @@ const Footer = () => {
             </ButtonFooter>
           ))}
         </div>
-
-        <div className="absolute top-[304px] left-[calc(50.00%_-_125px)] w-[262px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(153,153,153,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Montserrat',Helvetica] font-semibold text-transparent text-[10px] text-center tracking-[0] leading-[normal]">
-          © 2025 codevantage.in All rights reserved.
-        </div>
-      </div>
+     </div>
     </footer>
   );
 };
