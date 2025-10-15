@@ -42,3 +42,9 @@ h6 {
   font-weight: 600;
   letter-spacing: 0.02em;
 }
+
+/* For About Page */
+
+/* hiding scrollbars (for /about page) */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
