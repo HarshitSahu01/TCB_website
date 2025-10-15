@@ -50,17 +50,13 @@ export default function EventsPage() {
 
       const numberOfEvents = eventsData.length;
       const viewportWidth = window.innerWidth;
-      const paddingLeft = 170; // pl-[170px]
-      const paddingRight = 100; // pr-[100px]
+      const paddingLeft = 170;
+      const paddingRight = 100;
       
-      // Calculate the available width for content
       const availableWidth = viewportWidth - paddingLeft - paddingRight;
       
-      // Calculate total scroll distance: (number of events - 1) * available width
-      // This moves exactly one card width per scroll, showing the next card
       const scrollDistance = (numberOfEvents - 1) * availableWidth;
       
-      // Generate snap points dynamically based on number of events
       const snapPoints = [];
       for (let i = 0; i < numberOfEvents; i++) {
         snapPoints.push(i / (numberOfEvents - 1));
@@ -78,12 +74,11 @@ export default function EventsPage() {
           scrub: 1,
           snap: {
             snapTo: snapPoints,
-            duration: 0.2,
+            duration: 0.1,
             delay: 0,
-            ease: "none"
+            ease: "fadeInOut"
           },
           onUpdate: (self) => {
-            // Calculate which event is currently active based on progress
             const progress = self.progress;
             const currentIndex = Math.round(progress * (numberOfEvents - 1));
             setActiveIndex(currentIndex);
