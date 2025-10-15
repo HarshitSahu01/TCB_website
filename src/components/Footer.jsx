@@ -65,11 +65,12 @@ const characters = [
 const Footer = () => {
   return (
     <footer className="relative w-full max-w-[1440px] mx-auto flex flex-col gap-[0.1px]">
-      <h1 className="ml-[11.1px] h-[74.93px] w-full max-w-[1251.09px] self-center bg-[linear-gradient(180deg,rgba(255,255,255,1)_37%,rgba(28,28,28,1)_91%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Oxanium',Helvetica] font-bold text-transparent text-[103.7px] text-center tracking-[0] leading-[normal] whitespace-nowrap">
+      {/* Mobile-first heading: smaller and wrapable; desktop restored at md */}
+      <h1 className="w-full max-w-[1251.09px] mx-auto bg-[linear-gradient(180deg,rgba(255,255,255,1)_37%,rgba(28,28,28,1)_91%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Oxanium',Helvetica] font-bold text-transparent text-4xl md:text-[103.7px] text-center tracking-[0] leading-[normal] whitespace-normal md:whitespace-nowrap">
         The CodeBreakers Club
       </h1>
 
-      <div className="relative min-h-[372px]
+      <div className="relative min-h-[372px] py-8 md:py-0
     bg-[rgba(255,255,255,0.06)]
     rounded-[40px]
     border-[1.5px] border-solid border-[rgba(255,255,255,0.85)]
@@ -78,8 +79,11 @@ const Footer = () => {
     [-webkit-backdrop-filter:blur(30px)]
     [mask-image:linear-gradient(180deg,rgba(0,0,0,0.6)_0%,rgba(0,0,0,1)_35%)]
     [-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,0.6)_0%,rgba(0,0,0,1)_15%)]
-    overflow-hidden">
-        <div className="absolute top-[19px] left-[595px] w-[281px] h-[278px] opacity-[0.91]">
+    overflow-hidden
+    flex flex-col md:block
+    space-y-8 md:space-y-0">
+        {/* Decorative characters: hidden on mobile, visible on md+ */}
+        <div className="hidden md:block md:absolute md:top-[19px] md:left-[595px] md:w-[281px] md:h-[278px] md:opacity-[0.91]">
           {characters.map((character, index) => (
             <img
               key={index}
@@ -90,23 +94,24 @@ const Footer = () => {
           ))}
         </div>
 
-        <div className="absolute top-[143px] left-32 w-80 h-[67px]">
+        {/* Logo + slogan: stacked & centered on mobile, absolute on md+ to preserve desktop */}
+        <div className="static md:absolute md:top-[143px] md:left-32 md:w-80 md:h-[67px] w-full flex flex-col items-center md:items-start px-4 md:px-0 order-1 md:order-none">
           <img
-            className="absolute top-2 left-0 w-[51px] h-[51px]"
+            className="static md:absolute md:top-2 md:left-0 w-[51px] h-[51px] mb-4 md:mb-0"
             alt="Tcb"
             src="/tcb.png"
           />
 
-          <div className="absolute top-0 left-[calc(50.00%_-_101px)] w-[257px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(153,153,153,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Montserrat',Helvetica] font-bold text-transparent text-3xl tracking-[0] leading-[normal]">
+          <div className="static md:absolute md:top-0 md:left-[calc(50.00%_-_101px)] md:w-[257px] w-full bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(153,153,153,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Montserrat',Helvetica] font-bold text-transparent text-3xl tracking-[0] leading-[normal] text-center md:text-left">
             Breaking codes,
           </div>
-
-          <div className="absolute top-[30px] left-[calc(50.00%_-_101px)] w-[257px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(153,153,153,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Montserrat',Helvetica] font-bold text-transparent text-3xl tracking-[0] leading-[normal]">
+          <div className="static md:absolute md:top-[30px] md:left-[calc(50.00%_-_101px)] md:w-[257px] w-full bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(153,153,153,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Montserrat',Helvetica] font-bold text-transparent text-3xl tracking-[0] leading-[normal] text-center md:text-left">
             Creating minds.
           </div>
         </div>
 
-        <nav className="absolute top-[114px] left-[1002px] w-[120px] h-[122px] flex flex-col">
+        {/* Navigation: centered column on mobile, absolute at md+ */}
+        <nav className="static md:absolute md:top-[114px] md:left-[1002px] md:w-[120px] md:h-[122px] w-full flex flex-col items-center md:items-start text-center md:text-left mt-0 order-2 md:order-none">
           <div className="w-20 h-[25px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(153,153,153,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Oxanium',Helvetica] font-bold text-transparent text-xl text-center tracking-[0] leading-[normal]">
             Explore
           </div>
@@ -117,22 +122,23 @@ const Footer = () => {
               href={link.href}
               className={`${
                 index === 0
-                  ? "ml-[-68px] w-11"
+                  ? "md:ml-[-68px] md:w-11 md:text-left"
                   : index === 1
-                    ? "ml-[-68px] w-11"
+                    ? "md:ml-[-68px] md:w-11 md:text-left"
                     : index === 2
-                      ? "-ml-2 w-[104px]"
+                      ? "md:-ml-2 md:w-[104px] md:text-left"
                       : index === 3
-                        ? "ml-[-55px] w-[57px]"
-                        : "ml-[-31px] w-[81px]"
-              } h-4 self-center ${index === 0 ? "mt-[3px]" : index === 4 ? "mt-0.5" : "mt-1"} bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(153,153,153,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Montserrat',Helvetica] font-semibold text-transparent text-[13px] tracking-[0] leading-[normal] hover:opacity-80 transition-opacity`}
+                        ? "md:ml-[-55px] md:w-[57px] md:text-left"
+                        : "md:ml-[-31px] md:w-[81px] md:text-left"
+              } h-4 self-center mx-auto md:mx-0 ${index === 0 ? "mt-[3px]" : index === 4 ? "mt-0.5" : "mt-1"} bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(153,153,153,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Montserrat',Helvetica] font-semibold text-transparent text-[13px] tracking-[0] leading-[normal] hover:opacity-80 transition-opacity`}
             >
               {link.label}
             </a>
           ))}
         </nav>
 
-        <div className="absolute top-[114px] left-[1182px] w-36 h-[120px] flex flex-col">
+        {/* Social buttons: centered on mobile, absolute on md+ */}
+        <div className="static md:absolute md:top-[114px] md:left-[1182px] md:w-36 md:h-[120px] w-full flex flex-col items-center md:items-start mt-0 order-3 md:order-none">
           <div className="w-[108px] h-[25px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(153,153,153,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Oxanium',Helvetica] font-bold text-transparent text-xl text-center tracking-[0] leading-[normal]">
             Follow Us
           </div>
@@ -142,7 +148,7 @@ const Footer = () => {
               key={index}
               variant="ghost"
               asChild
-              className={`flex ml-[9px] w-[133px] h-8 ${index === 0 ? "mt-[7px]" : "mt-[9px]"} items-center justify-start gap-2 px-3 py-1 shadow-[2px_5px_12px_#00000026,22px_43px_29px_#0000001a,61px_121px_38px_#0000000a,0px_4px_4px_#00000040] bg-[linear-gradient(135deg,rgba(85,85,85,0.4)_0%,rgba(66,66,66,0.4)_100%)] rounded-[40px] overflow-hidden border-[none] backdrop-blur-[7.5px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(7.5px)_brightness(100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-[40px] before:[background:linear-gradient(123deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.1)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none hover:opacity-80 transition-opacity cursor-pointer`}
+              className={`flex w-[90%] md:w-[133px] max-w-[320px] h-8 ${index === 0 ? "mt-[7px]" : "mt-[9px]"} items-center justify-center md:justify-start gap-2 px-3 py-1 shadow-[2px_5px_12px_#00000026,22px_43px_29px_#0000001a,61px_121px_38px_#0000000a,0px_4px_4px_#00000040] bg-[linear-gradient(135deg,rgba(85,85,85,0.4)_0%,rgba(66,66,66,0.4)_100%)] rounded-[40px] overflow-hidden border-[none] backdrop-blur-[7.5px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(7.5px)_brightness(100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-[40px] before:[background:linear-gradient(123deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.1)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none hover:opacity-80 transition-opacity cursor-pointer mx-auto md:mx-0 md:ml-[9px]`}
             >
               <a 
                 href={social.href} 
