@@ -151,7 +151,7 @@ export default function AboutPage() {
   }
 
   return (
-    <div className="min-h-screen w-full py-8 bg-[#000000] overflow-x-hidden">
+    <div className="min-h-screen w-full py-8 mt-[10vh] bg-[#000000] overflow-x-hidden">
       <h2 className="text-2xl sm:text-3xl mt-4 mb-6 px-4 sm:px-8 lg:px-16">
         Our Team
       </h2>

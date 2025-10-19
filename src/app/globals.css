@@ -48,3 +48,7 @@ h6 {
 /* hiding scrollbars (for /about page) */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.buttonFooter{
+  background: linear-gradient(140deg, #7E7E7E 2%, rgb(34,34,34) 12.22%, rgb(34,34,34) 82.77%, #3F3F3F 98%);
+}
