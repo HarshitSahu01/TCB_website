@@ -1,5 +1,10 @@
-import AchievementsPage from "./achievements/page1";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 
 export default function Home() {
-  return <AchievementsPage />;
+  return (
+    <>
+      <h1>Home</h1>
+    </>
+  )
 }
